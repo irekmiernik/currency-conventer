@@ -10,6 +10,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/header.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
     <script defer src="js/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,14 +25,15 @@
     <form class="form">
         <p>
             <label>
-                Podaj: <input class="js-exchangeValue" type="number" step="0.01" min="0.01" required
-                    name="exchangeValue" placeholder="wartość">
+                <strong class="form__labelExchangeValue">Podaj:</strong><input class="js-exchangeValue" type="number"
+                    step="0.01" min="0.01" required name="exchangeValue" placeholder="wartość">
                 <select class="js-exchangeValueSelect">
                     <option value="EUR" selected>EUR</option>
                     <option value="PLN">PLN</option>
                 </select>
-                oraz kurs Euro: <input class="js-exchangeRate" type="number" step="0.0001" min="0.0001" required
-                    name="exchangeRate" placeholder="Podaj kurs"><strong class="form__comments">(Oba pola muszą być wypełnione!)</strong>
+                <strong class="form__labelExchangeRate">oraz kurs Euro:</strong><input class="js-exchangeRate"
+                    type="number" step="0.0001" min="0.0001" required name="exchangeRate" placeholder="wartość"><strong
+                    class="form__comment">(Pola muszą być wypełnione!)</strong>
             </label>
         </p>
         <p>
