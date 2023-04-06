@@ -21,3 +21,7 @@
     margin: 0 auto;
     font-weight: 400;
 }
+
+.form__button {
+    background-color: #b6b6fe;
+}
