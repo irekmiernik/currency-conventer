@@ -1,6 +1,7 @@
 {
     let exchangeCurrency = document.querySelector(".js-exchangeCurrency");
     let calculatedCurrency = document.querySelector(".js-calculatedCurrency");
+    let calculatedValue = document.querySelector(".js-calculatedValue");
 
     let settingCurrency = (source) => {
         if (source === "EUR") { return "PLN"; }
@@ -16,8 +17,10 @@
         exchangeCurrency.value = settingCurrency(calculatedCurrency.value);
         calculatedValue.value = "N/A";
     })
-
+}
+{
     let exchangeValue = document.querySelector(".js-exchangeValue");
+    let exchangeCurrency = document.querySelector(".js-exchangeCurrency");
     let exchangeRate = document.querySelector(".js-exchangeRate");
     let calculatedValue = document.querySelector(".js-calculatedValue");
     let formSubmit = document.querySelector(".form");
