@@ -9,10 +9,12 @@
 
     exchangeCurrency.addEventListener("input", () => {
         calculatedCurrency.value = settingCurrency(exchangeCurrency.value);
+        calculatedValue.value = "N/A";
     })
 
     calculatedCurrency.addEventListener("input", () => {
         exchangeCurrency.value = settingCurrency(calculatedCurrency.value);
+        calculatedValue.value = "N/A";
     })
 
     let exchangeValue = document.querySelector(".js-exchangeValue");
