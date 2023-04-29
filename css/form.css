@@ -2,26 +2,38 @@
     padding: 20px;
     box-shadow: 2px 2px 2px #8ea5f6;
     background-color: #d9ddeb;
-    max-width: 800px;
+    max-width: 900px;
+    margin: auto;
 }
 
-.form__comment {
-    padding-left: 10px;
-    font-style: italic;
-    font-weight: 400;
+.form__label {
+    font-weight: bold;
+    padding-left: 55px;
 }
 
-.form__labelExchangeRate {
+.form__label--OwnPadding {
     padding: 0px 5px;
-    font-weight: 400;
 }
 
-.form__labelExchangeValue {
-    padding-right: 10px;
-    margin: 0 auto;
-    font-weight: 400;
+.form__label--rates {
+    font-size: small;
+    font-style: italic;
 }
 
-.form__button {
-    background-color: #b6b6fe;
+.form__labelEUR {
+    padding-left: 5px;
+    color: #f50808;
+    background-color: #fff;
+}
+
+.form__labelUSD {
+    padding-left: 5px;
+    color: #2c08f5;
+    background-color: #fff;
+}
+
+.form__labelGBP {
+    padding-left: 5px;
+    color: #0c8011;
+    background-color: #fff;
 }

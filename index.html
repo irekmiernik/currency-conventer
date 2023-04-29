@@ -21,33 +21,68 @@
 </head>
 
 <body class="body">
+
     <h1 class="header">Kalkulator walutowy</h1>
+
     <form class="form">
+
+        <label class="form__label">
+            Podaj kwotę wybranej waluty: <input class="js-exchangeValue" type="number" step="0.01" min="0.01" required
+                name="exchangeValue" placeholder="Twoja wartość" autofocus>
+            <select class="js-exchangeCurrency">
+                <option value="PLN">PLN</option>
+                <option value="EUR" selected>EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+            </select>
+        </label>
+        <label>
+            <strong class="form__label form__label--OwnPadding"> = </strong><input class="js-calculatedValue"
+                type="number" readonly name="calculatedValue" placeholder="Obliczona wartość">
+            <select class="js-calculatedCurrency">
+                <option value="PLN" selected>PLN</option>
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+            </select>
+        </label>
+
         <p>
-            <label>
-                <strong class="form__labelExchangeValue">Podaj:</strong><input class="js-exchangeValue" type="number"
-                    step="0.01" min="0.01" required name="exchangeValue" placeholder="wartość">
-                <select class="js-exchangeCurrency">
-                    <option value="EUR" selected>EUR</option>
-                    <option value="PLN">PLN</option>
-                </select>
-                <strong class="form__labelExchangeRate">oraz kurs Euro:</strong><input class="js-exchangeRate"
-                    type="number" step="0.0001" min="0.0001" required name="exchangeRate" placeholder="wartość"><strong
-                    class="form__comment">(Pola muszą być wypełnione!)</strong>
+            <label class="form__label form__label--rates js-form__labelRates">Kursy poszczególnych walut można zmienia
+                tutaj:
+                <strong class="form__labelEUR js-form__labelEUR"> EUR,</strong>
+                <strong class="form__labelUSD js-form__labelUSD"> USD,</strong>
+                <strong class="form__labelGBP js-form__labelGBP"> GBP.</strong>
             </label>
         </p>
         <p>
-            <label>
-                <button class="form__button">Oblicz!</button> <input class="js-calculatedValue" type="number" readonly
-                    name="calculatedValue" placeholder="N/A">
-                <select class="js-calculatedCurrency">
-                    <option value="EUR">EUR</option>
-                    <option value="PLN" selected>PLN</option>
-                </select>
+            <label class="form__label form__label--rates js-form__labelRateEUR" hidden>
+                Kurs <strong class="form__labelEUR"> EUR: </strong>
             </label>
+            <input class="js-rateEUR" type="number" step="0.0001" min="0.0001" required name="rateEUR"
+                placeholder="Podaj kurs EUR" hidden>
+
+        </p>
+        <p>
+            <label class="form__label form__label--rates js-form__labelRateUSD" hidden>
+                Kurs <strong class="form__labelUSD"> USD: </strong>
+            </label>
+            <input class="js-rateUSD" type="number" step="0.0001" min="0.0001" required name="rateUSD"
+                placeholder="Podaj kurs USD" hidden>
+
+        </p>
+        <p>
+            <label class="form__label form__label--rates js-form__labelRateGBP" hidden>
+                Kurs <strong class="form__labelGBP"> GBP: </strong>
+            </label>
+            <input class="js-rateGBP" type="number" step="0.0001" min="0.0001" required name="rateGBP"
+                placeholder="Podaj kurs GBP" hidden>
+
         </p>
     </form>
+
     <footer class="footer">Wszelkie prawa zastrzeżone Ireneusz Miernik 2023</footer>
+
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 .header {
     color: #3c06c5;
     background-color: #e8e3f4;
-    max-width: 240px;
+    max-width: 300px;
+    text-align: center;
     margin: 20px auto;
     font-size: 25px;
     font-weight: 700;
