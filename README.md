@@ -1,2 +1,2 @@
 ﻿# Currency conventer
- https://irekmiernik.github.io/currency-conventer/
+ [Demo] https://irekmiernik.github.io/currency-conventer/
