@@ -1,6 +1,7 @@
 ﻿# Currency conventer
  ## Demo
  https://irekmiernik.github.io/currency-conventer/
+ 
  ## Opis
  There are four currencies (PLN, EUR, USD, GBP) in this conventer.
  Calculations can be made between each pairs of this curriences (for example between EUR and GBP or GBP and EUR) so there can be made twelve diferenet calculations.
