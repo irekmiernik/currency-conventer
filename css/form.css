@@ -1,14 +1,18 @@
 .form {
-    padding: 20px;
-    box-shadow: 2px 2px 2px #8ea5f6;
-    background-color: #d9ddeb;
+    padding: 40px;
+    box-shadow: 1px 1px 1px black;
+    background-color: #cacaca;
+    background-image: url("../images/background.png");
+    background-size: 135px;
+    background-repeat: no-repeat;
     max-width: 900px;
-    margin: auto;
+    text-align: center;
 }
 
 .form__label {
     font-weight: bold;
-    padding-left: 55px;
+    max-width: 700px;
+    background-color: #fff;
 }
 
 .form__label--OwnPadding {
@@ -23,17 +27,17 @@
 .form__labelEUR {
     padding-left: 5px;
     color: #f50808;
-    background-color: #fff;
+    text-decoration: underline;
 }
 
 .form__labelUSD {
     padding-left: 5px;
-    color: #2c08f5;
-    background-color: #fff;
+    color: #4aab04;
+    text-decoration: underline;
 }
 
 .form__labelGBP {
     padding-left: 5px;
-    color: #0c8011;
-    background-color: #fff;
+    color: #172496;
+    text-decoration: underline;
 }
