@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 1104px;
+    height: 342px;
+    padding: 20px;
+    background-image: url("../images/background.png");
+    background-size: 100px;
+    background-repeat: repeat;
+    background-position: center;
+}

@@ -1,9 +1,10 @@
 .header {
     color: #3c06c5;
     background-color: #e8e3f4;
-    max-width: 300px;
+    max-width: 400px;
     text-align: center;
     margin: 20px auto;
+    padding: 20px;
     font-size: 25px;
     font-weight: 700;
     box-shadow: 1px 1px 1px black;

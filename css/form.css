@@ -1,11 +1,12 @@
 .form {
+    /*   display: flex;
+    justify-content: center;
+    flex-direction: column; */
     padding: 20px;
+    margin: 0 auto;
     box-shadow: 1px 1px 1px black;
-    background-color: #cacaca;
-    background-image: url("../images/background.png");
-    background-size: 130px;
-    background-repeat: no-repeat;
-    max-width: 900px;
+    background-color: #fff;
+    max-width: 800px;
     text-align: center;
 }
 
@@ -15,29 +16,12 @@
     background-color: #fff;
 }
 
-.form__label--OwnPadding {
+.form__labelEqual {
     padding: 0px 5px;
 }
 
-.form__label--rates {
+.form__labelRates {
     font-size: small;
     font-style: italic;
-}
-
-.form__labelEUR {
-    padding-left: 5px;
     color: #f50808;
-    text-decoration: underline;
-}
-
-.form__labelUSD {
-    padding-left: 5px;
-    color: #4aab04;
-    text-decoration: underline;
-}
-
-.form__labelGBP {
-    padding-left: 5px;
-    color: #172496;
-    text-decoration: underline;
 }
