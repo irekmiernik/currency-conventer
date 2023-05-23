@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 1104px;
+    max-width: 1104px;
     height: 342px;
     padding: 20px;
     background-image: url("../images/background.png");

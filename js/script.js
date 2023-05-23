@@ -1,108 +1,154 @@
 {
-    const exchangedRates = {
-        ratesTable: [],
-        getIndex(symbol) {
-            for (let i = 0; i < this.ratesTable.length; i++) {
-                if (this.ratesTable[i].currencySymbol === symbol) return i;
-            }
-        },
-        setExchangedRate(symbol, rate) {
-            this.ratesTable[this.getIndex(symbol)].currencyRate = rate;
-        },
-        getExchangedRate(symbol) {
-            return this.ratesTable[this.getIndex(symbol)].currencyRate;
+    const indexCurriency = (table, symbolCurriency) => {
+        for (let i = 0; i < table.length; i++) {
+            if (table[i].symbolCurriency === symbolCurriency) return i;
+        }
+    };
+
+    const setCurriencyExchangeRate = (table, symbolCurriency, rateCurriency) => {
+        table[indexCurriency(table, symbolCurriency)].rateCurriency = rateCurriency;
+    };
+
+    const getCurriencyExchangeRate = (table, symbolCurriency) => {
+        return table[indexCurriency(table, symbolCurriency)].rateCurriency;
+    };
+
+    const verifyingCurrencies = (changedCurriency, notChangedCurriency) => {
+        if (changedCurriency.value === notChangedCurriency.value) {
+            notChangedCurriency.selectedIndex = notChangedCurriency.selectedIndex < (notChangedCurriency.length - 1) ?
+                ++notChangedCurriency.selectedIndex : 0;
         }
     }
 
-    const exchangedCurrency = document.querySelector(".js-exchangedCurrency");
-    const calculatedCurrency = document.querySelector(".js-calculatedCurrency");
-    const exchangedAmount = document.querySelector(".js-exchangedAmount");
-    const calculatedAmount = document.querySelector(".js-calculatedAmount");
-
-    const calculateRate = (exchangedCurrencySymbol, calculatedCurrencySymbol) => {
-        if (exchangedRates.getExchangedRate(calculatedCurrencySymbol.value) > 0) {
-            return exchangedRates.getExchangedRate(exchangedCurrencySymbol.value) / exchangedRates.getExchangedRate(calculatedCurrencySymbol.value);
-        } else { return 0; }
+    const calculateValue = (exchangeValue, exchangeRateInputCurriency, exchangeRateOutputCurriency) => {
+        if ((exchangeRateOutputCurriency > 0) & (+exchangeValue.value > 0)) {
+            return ((exchangeRateInputCurriency / exchangeRateOutputCurriency) * +exchangeValue.value).toFixed(2);
+        }
+        return "";
     }
 
-    const calculate = () => {
-        calculatedAmount.value = "";
-        if ((calculateRate(exchangedCurrency, calculatedCurrency) > 0) & (+exchangedAmount.value > 0)) {
-            calculatedAmount.value = (calculateRate(exchangedCurrency, calculatedCurrency) * +exchangedAmount.value).toFixed(2);
+    const setCurriencies = (table) => {
+        const inputCurrency = document.querySelector(".js-inputCurrency");
+        const outputCurrency = document.querySelector(".js-outputCurrency");
+        const inputAmount = document.querySelector(".js-inputAmount");
+        const outputAmount = document.querySelector(".js-outputAmount");
+
+        const onInputCurrencyInput = () => {
+            verifyingCurrencies(inputCurrency, outputCurrency);
+            outputAmount.value = calculateValue(inputAmount, getCurriencyExchangeRate(table, inputCurrency.value),
+                getCurriencyExchangeRate(table, outputCurrency.value));
         }
+
+        const onOutputCurrencyInput = () => {
+            verifyingCurrencies(outputCurrency, inputCurrency);
+            outputAmount.value = calculateValue(inputAmount, getCurriencyExchangeRate(table, inputCurrency.value),
+                getCurriencyExchangeRate(table, outputCurrency.value));
+        }
+
+        verifyingCurrencies(outputCurrency, inputCurrency);
+        inputCurrency.addEventListener("input", onInputCurrencyInput);
+        outputCurrency.addEventListener("input", onOutputCurrencyInput);
+
     }
 
-    {
-        const verifyingCurrencies = (source, destination) => {
-            if (source.value === destination.value) {
-                if (destination.selectedIndex < 3) destination.selectedIndex++;
-                else destination.selectedIndex = 0;
-            }
+    const calculateExchangeValue = (table) => {
+        const inputCurrency = document.querySelector(".js-inputCurrency");
+        const outputCurrency = document.querySelector(".js-outputCurrency");
+        const inputAmount = document.querySelector(".js-inputAmount");
+        const outputAmount = document.querySelector(".js-outputAmount");
+
+        const oninputAmountInput = () => {
+            outputAmount.value = calculateValue(inputAmount, getCurriencyExchangeRate(table, inputCurrency.value),
+                getCurriencyExchangeRate(table, outputCurrency.value));
         }
 
-        const onExchangedCurrencyInput = () => {
-            verifyingCurrencies(exchangedCurrency, calculatedCurrency);
-            calculate();
-        }
+        inputAmount.addEventListener("input", oninputAmountInput);
 
-        const onCalculatedCurrencyInput = () => {
-            verifyingCurrencies(calculatedCurrency, exchangedCurrency);
-            calculate();
-        }
-
-        exchangedCurrency.addEventListener("input", onExchangedCurrencyInput);
-        calculatedCurrency.addEventListener("input", onCalculatedCurrencyInput);
-        exchangedAmount.addEventListener("input", calculate);
     }
 
-    {
-        const labelExchangeRates = document.querySelector(".js-labelExchangeRates");
+
+    const updateExchangedRates = (table) => {
+
+        const labelUpdateExchangeRates = document.querySelector(".js-labelUpdateExchangeRates");
         const labelInputExchangeRates = document.querySelector(".js-labelInputExchangeRates");
         const inputExchangeRate = document.querySelector(".js-inputExchangeRate");
-        const inputExchangeCurrency = document.querySelector(".js-inputExchangedCurrency");
+        const inputExchangeRateCurrency = document.querySelector(".js-inputExchangeRateCurrency");
+        const inputCurrency = document.querySelector(".js-inputCurrency");
+        const outputCurrency = document.querySelector(".js-outputCurrency");
+        const inputAmount = document.querySelector(".js-inputAmount");
+        const outputAmount = document.querySelector(".js-outputAmount");
 
         const onLabelExchangeRatesClick = () => {
-            labelExchangeRates.hidden = true;
+            labelUpdateExchangeRates.hidden = true;
             labelInputExchangeRates.hidden = false;
             inputExchangeRate.hidden = false;
-            inputExchangeCurrency.hidden = false;
-            inputExchangeRate.value = exchangedRates.getExchangedRate(inputExchangeCurrency.value);
+            inputExchangeRateCurrency.hidden = false;
+            inputExchangeRate.value = getCurriencyExchangeRate(table, inputExchangeRateCurrency.value);
         }
 
         const onLabelInputExchangeRatesClick = () => {
             if (inputExchangeRate.value > 0) {
-                labelExchangeRates.hidden = false;
+                labelUpdateExchangeRates.hidden = false;
                 labelInputExchangeRates.hidden = true;
                 inputExchangeRate.hidden = true;
-                inputExchangeCurrency.hidden = true;
+                inputExchangeRateCurrency.hidden = true;
             } else inputExchangeRate.value = "";
 
         }
 
         const onInputExchangedRateInput = () => {
             if (inputExchangeRate.value > 0) {
-                exchangedRates.setExchangedRate(inputExchangeCurrency.value, inputExchangeRate.value);
-                calculate();
+                setCurriencyExchangeRate(table, inputExchangeRateCurrency.value, inputExchangeRate.value);
+                outputAmount.value = calculateValue(inputAmount, getCurriencyExchangeRate(table, inputCurrency.value),
+                    getCurriencyExchangeRate(table, outputCurrency.value));
             }
         }
 
         const onInputExchangedCurrencyInput = () => {
-            inputExchangeRate.value = exchangedRates.getExchangedRate(inputExchangeCurrency.value);
+            inputExchangeRate.value = getCurriencyExchangeRate(table, inputExchangeRateCurrency.value);
         }
 
-        labelExchangeRates.addEventListener("click", onLabelExchangeRatesClick);
+        labelUpdateExchangeRates.addEventListener("click", onLabelExchangeRatesClick);
         labelInputExchangeRates.addEventListener("click", onLabelInputExchangeRatesClick);
         inputExchangeRate.addEventListener("input", onInputExchangedRateInput);
-        inputExchangeCurrency.addEventListener("input", onInputExchangedCurrencyInput);
+        inputExchangeRateCurrency.addEventListener("input", onInputExchangedCurrencyInput);
     }
 
-    const inputExchangedRates = (table) => {
-        table.ratesTable.push({ currencySymbol: "PLN", currencyRate: 1.00 });
-        table.ratesTable.push({ currencySymbol: "EUR", currencyRate: 4.56 });
-        table.ratesTable.push({ currencySymbol: "USD", currencyRate: 3.95 });
-        table.ratesTable.push({ currencySymbol: "GBP", currencyRate: 5.30 });
+    const init = () => {
+
+        const tableExchangeRates = [
+            { symbolCurriency: "PLN", rateCurriency: 1.00 },
+            { symbolCurriency: "EUR", rateCurriency: 4.56 },
+            { symbolCurriency: "USD", rateCurriency: 3.95 },
+            { symbolCurriency: "GBP", rateCurriency: 5.30 },
+            { symbolCurriency: "CHF", rateCurriency: 4.88 },
+        ];
+
+        const render = () => {
+            let htmlStringWithPLN = "";
+            let htmlStringWithoutPLN = "";
+            for (const rate of tableExchangeRates) {
+                htmlStringWithPLN += `
+                <option value=${rate.symbolCurriency}>
+                    ${rate.symbolCurriency}
+                </option>
+                `;
+                htmlStringWithoutPLN += rate.symbolCurriency === "PLN" ? "" :
+                    `<option value=${rate.symbolCurriency}>
+                    ${rate.symbolCurriency}
+                </option>
+                `;
+            }
+            document.querySelector(".js-inputCurrency").innerHTML = htmlStringWithPLN;
+            document.querySelector(".js-outputCurrency").innerHTML = htmlStringWithPLN;
+            document.querySelector(".js-inputExchangeRateCurrency").innerHTML = htmlStringWithoutPLN;
+        }
+
+        render();
+        setCurriencies(tableExchangeRates);
+        updateExchangedRates(tableExchangeRates);
+        calculateExchangeValue(tableExchangeRates);
     }
 
-    const init = () => { inputExchangedRates(exchangedRates); }
     init();
 }
