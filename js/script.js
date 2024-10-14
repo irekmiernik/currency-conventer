@@ -116,7 +116,7 @@
 
     const init = () => {
 
-        const tableExchangeRates = [
+        const exchangeRates = [
             { symbolCurriency: "PLN", rateCurriency: 1.00 },
             { symbolCurriency: "EUR", rateCurriency: 4.56 },
             { symbolCurriency: "USD", rateCurriency: 3.95 },
@@ -127,7 +127,7 @@
         const render = () => {
             let htmlStringWithPLN = "";
             let htmlStringWithoutPLN = "";
-            for (const rate of tableExchangeRates) {
+            for (const rate of exchangeRates) {
                 htmlStringWithPLN += `
                 <option value=${rate.symbolCurriency}>
                     ${rate.symbolCurriency}
@@ -145,9 +145,9 @@
         }
 
         render();
-        setCurriencies(tableExchangeRates);
-        updateExchangedRates(tableExchangeRates);
-        calculateExchangeValue(tableExchangeRates);
+        setCurriencies(exchangeRates);
+        updateExchangedRates(exchangeRates);
+        calculateExchangeValue(exchangeRates);
     }
 
     init();
