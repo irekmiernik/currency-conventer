@@ -27,20 +27,20 @@
     <h1 class="header">Kalkulator walutowy</h1>
     <div class="container">
         <form class="form">
-            <p>
-                <label class="form__label"> Podaj kwotę wybranej waluty:
-                    <input class="js-inputAmount" type="number" step="0.01" min="0.01" required
-                        placeholder="Twoja wartość" autofocus>
-                    <select class="js-inputCurrency"></select>
-                    <strong class="form__label form__labelEqual"> = </strong>
-                    <input class="js-outputAmount" type="number" readonly placeholder="Obliczona wartość">
-                    <select class="js-outputCurrency"></select>
-                </label>
+            <p class="form__label">
+                Podaj kwotę wybranej waluty:
+                <input class="js-inputAmount" type="number" step="0.01" min="0.01" required placeholder="Twoja wartość"
+                    autofocus>
+                <select class="js-inputCurrency"></select>
+                <strong class="form__label form__labelEqual"> = </strong>
+                <input class="js-outputAmount" type="number" readonly placeholder="Obliczona wartość">
+                <select class="js-outputCurrency"></select>
+            </p>
+            <p class="js-labelUpdateExchangeRates">
+                Kursy walut można zobaczyć
+                <strong class="form__label form__labelRates">tutaj</strong>
             </p>
             <p>
-                <strong class="form__label form__labelRates js-labelUpdateExchangeRates">
-                    Pokaż kursy walut
-                </strong>
                 <strong class="form__label form__labelRates js-labelInputExchangeRates" hidden>
                     Ukryj kursy walut
                 </strong>
